@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+//@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-blue: #4A90E2;
+  --color--orange: #F5A623;
+  --color-white: #fff;
+}
+
+.av-widget {
+  background-color: var(--color-blue);
+  min-width: 200px;
+  max-width: 1024px;
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  padding: 5px 20px 15px 20px;
+
+  &__heading {
+    font-size: 24px;
+  }
+
+  &__body {
+    margin-top: 18px;
+    display: flex;
+
+    @media screen and (max-width: 768px ){
+      flex-direction: column;
+    }
+  }
+
+  .av-widget-caption {
+    font-size: 10px;
+    flex-basis: 25%;
+    margin-right: 20px;
+  }
+}
+
+.av-widget-form {
+  display: flex;
+  justify-content: space-between;
+  min-height: 40px;
+  flex-basis: 75%;
+
+  &__pickers {
+    display: flex;
+    flex-basis: 66.3333%;
+    margin-right: 20px;
+  }
+
+  &__picker {
+    position: relative;
+    flex-basis: 50%;
+
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  &__submit {
+    background-color: var(--color--orange);
+    color: var(--color-white);
+    text-transform: uppercase;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    flex-basis: 33.3333%;
+  }
+}
+
+.av-widget-date-picker {
+  width: 100%;
+  height: 100%;
+}
+
+.av-widget-calendar-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
