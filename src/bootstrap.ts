@@ -23,7 +23,6 @@ export const DEFAULT_CONFIG = {
 }
 
 function bootstrap(config: Partial<Config> = {}) {
-	console.log(config);
 	const finalConfig: Config = { ...DEFAULT_CONFIG, ...config };
 
 	const root = document.querySelector(`${finalConfig.root}`) as HTMLElement;

@@ -1,3 +1,4 @@
+@import "~flatpickr/dist/flatpickr.css";
 @import "reset";
 @import "variables";
 
@@ -12,6 +13,7 @@
 
   &__heading {
     font-size: 24px;
+    font-weight: 600;
     @media screen and (max-width: $bp-narrow) {
       font-size: 18px;
     }
@@ -31,6 +33,7 @@
     font-size: 10px;
     flex-basis: 25%;
     margin-right: 20px;
+    font-weight: 600;
 
     @media screen and (max-width: $bp-wide) {
       margin-top: 20px;
@@ -79,6 +82,7 @@
     @media screen and (max-width: $bp-narrowest) {
       &:not(:last-child) {
         margin-right: 0;
+        margin-bottom: 14px;
       }
     }
   }
@@ -93,6 +97,13 @@
     border: 0;
     border-radius: 5px;
     flex-basis: 33.3333%;
+    cursor: pointer;
+    transition: .2s;
+    outline: none;
+
+    &:hover, &:active, &:focus {
+      opacity: 0.8;
+    }
   }
 }
 
@@ -100,6 +111,8 @@
   width: 100%;
   height: 100%;
   padding: 10px 30px 10px 10px;
+  border-radius: 5px;
+  border: none;
 
   &:focus {
     box-shadow: 0 0 0 2px var(--color-btn);

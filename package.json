@@ -11,12 +11,8 @@
     "serve": "webpack serve --config webpack.dev.config.js",
     "start": "serve -l 3000 dist"
   },
-  "browserslist": [
-    "defaults",
-    "not IE 11",
-    "maintained node versions"
-  ],
   "dependencies": {
+    "flatpickr": "^4.6.6",
     "serve": "^11.3.2"
   },
   "devDependencies": {
@@ -31,7 +27,6 @@
     "mini-css-extract-plugin": "^1.3.3",
     "node-sass": "^5.0.0",
     "postcss": "^8.2.1",
-    "postcss-import": "^14.0.0",
     "postcss-loader": "^4.1.0",
     "postcss-short": "^5.0.0",
     "sass-loader": "^10.1.0",

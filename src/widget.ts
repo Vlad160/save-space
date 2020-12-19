@@ -1,5 +1,7 @@
 import html from './template.html';
 import './styles.scss';
+import flatpickr from 'flatpickr';
+import Instance = flatpickr.Instance;
 
 export interface ColorsPalette {
 	textColor: string;
@@ -9,20 +11,46 @@ export interface ColorsPalette {
 
 
 export class Widget {
+	private fromPicker: Instance;
+	private endPicker: Instance;
+	private pickerRoot: HTMLElement;
 
-	constructor(private root: ShadowRoot, private palette: ColorsPalette) {
+	constructor(private root: ShadowRoot,
+	            private palette: ColorsPalette
+	) {
 	}
 
 	init() {
+		this.pickerRoot = this.root.ownerDocument.createElement('div');
+		this.root.appendChild(this.pickerRoot);
+		this.pickerRoot.classList.add('av-picker-root');
 		const paletteStyles = this.createStylePalette();
 		this.root.appendChild(paletteStyles);
-		this.root.appendChild(this.createView());
+		const view = this.createView();
+		this.root.appendChild(view);
+		this.bindPickers(view)
+	}
+
+	private bindPickers(view: HTMLElement) {
+		this.fromPicker = this.bindPicker(view, '#av-date-picker-start',
+			{ onChange: ([selectedDate]) => this.endPicker.set('minDate', selectedDate) });
+		this.endPicker = this.bindPicker(view, '#av-date-picker-end');
 	}
 
 	private createView() {
 		const div = document.createElement('div');
 		div.innerHTML = html;
-		return div.firstChild;
+		return div.firstChild as HTMLElement;
+	}
+
+	private bindPicker(view: HTMLElement, selector: string, options = {}) {
+		const dateFrom = view.querySelector(selector);
+		return flatpickr(dateFrom, {
+			dateFormat: 'd.m.Y',
+			minDate: 'today',
+			appendTo: this.pickerRoot,
+			...options
+		});
 	}
 
 	private createStylePalette() {
@@ -32,7 +60,7 @@ export class Widget {
         --color-btn: ${btnColor};
         --color-text: ${textColor};
 		}`
-		const style = document.createElement('style');
+		const style = this.root.ownerDocument.createElement('style');
 		style.textContent = palette;
 		return style;
 	}
