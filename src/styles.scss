@@ -1,77 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
-//@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-
-*, *::after, *::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
-input {
-  font-family: inherit;
-}
-
-body {
-  font-family: 'Open Sans', sans-serif;
-  box-sizing: border-box;
-}
-
-:root {
-  --color-blue: #4A90E2;
-  --color--orange: #F5A623;
-  --color-white: #fff;
-}
+@import "reset";
+@import "variables";
 
 .av-widget {
   background-color: var(--color-blue);
@@ -84,14 +12,18 @@ body {
 
   &__heading {
     font-size: 24px;
+    @media screen and (max-width: $bp-narrow) {
+      font-size: 18px;
+    }
   }
 
   &__body {
     margin-top: 18px;
     display: flex;
 
-    @media screen and (max-width: 768px ){
+    @media screen and (max-width: $bp-wide) {
       flex-direction: column;
+      justify-content: space-between;
     }
   }
 
@@ -99,36 +31,66 @@ body {
     font-size: 10px;
     flex-basis: 25%;
     margin-right: 20px;
+
+    @media screen and (max-width: $bp-wide) {
+      margin-top: 20px;
+      margin-bottom: 16px;
+    }
+
+    @media screen and (max-width: $bp-narrowest) {
+      order: 1;
+    }
   }
 }
 
 .av-widget-form {
   display: flex;
   justify-content: space-between;
-  min-height: 40px;
   flex-basis: 75%;
+
+  @media screen and (max-width: $bp-narrow) {
+    flex-direction: column;
+  }
 
   &__pickers {
     display: flex;
     flex-basis: 66.3333%;
     margin-right: 20px;
+    @media screen and (max-width: $bp-narrow) {
+      margin-bottom: 20px;
+      margin-right: 0;
+    }
+
+    @media screen and (max-width: $bp-narrowest) {
+      flex-direction: column;
+    }
   }
 
   &__picker {
     position: relative;
     flex-basis: 50%;
+    height: 40px;
+
 
     &:not(:last-child) {
       margin-right: 20px;
     }
+
+    @media screen and (max-width: $bp-narrowest) {
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+    }
   }
 
   &__submit {
-    background-color: var(--color--orange);
+    background-color: var(--color-orange);
     color: var(--color-white);
     text-transform: uppercase;
     font-size: 20px;
-    border: none;
+    min-height: 40px;
+    display: inline-block;
+    border: 0;
     border-radius: 5px;
     flex-basis: 33.3333%;
   }
@@ -137,6 +99,11 @@ body {
 .av-widget-date-picker {
   width: 100%;
   height: 100%;
+}
+
+.av-widget-icon {
+  height: 16px;
+  width: 16px;
 }
 
 .av-widget-calendar-icon {
