@@ -39,7 +39,7 @@ function index(config: Partial<Config> = {}) {
 	shadowRoot.appendChild(style);
 	const widget = new Widget(shadowRoot, finalConfig.palette);
 	// You should have questions :) I'm lazy AF. Of course I have plenty of options but....
-	style.addEventListener('load', () => widget.init());
+	style.addEventListener('load', () => widget.init(), { once: true });
 }
 
 function getConfigFromWindow(): Partial<Config> {
