@@ -1,5 +1,5 @@
-import html from './template.html';
-import './styles.scss';
+import html from './views/template.html';
+import './styles/index.scss';
 import flatpickr from 'flatpickr';
 import Instance = flatpickr.Instance;
 
@@ -16,8 +16,7 @@ export class Widget {
 	private pickerRoot: HTMLElement;
 
 	constructor(private root: ShadowRoot,
-	            private palette: ColorsPalette
-	) {
+	            private palette: ColorsPalette) {
 	}
 
 	init() {

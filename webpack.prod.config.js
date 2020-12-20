@@ -6,7 +6,7 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 
 const config = {
-    entry: path.resolve(__dirname, 'src', 'bootstrap.ts'),
+    entry: path.resolve(__dirname, 'src', 'index.ts'),
     output: {
         filename: 'widget.js',
         path: path.resolve(__dirname, 'dist'),

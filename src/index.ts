@@ -1,4 +1,5 @@
 import { ColorsPalette, Widget } from './widget';
+import { mergeDeep } from './util';
 
 declare global {
 	interface Window {$$avWidgetConfig: any;}
@@ -22,9 +23,10 @@ export const DEFAULT_CONFIG = {
 	palette: DEFAULT_PALETTE
 }
 
-function bootstrap(config: Partial<Config> = {}) {
-	const finalConfig: Config = { ...DEFAULT_CONFIG, ...config };
-
+function index(config: Partial<Config> = {}) {
+	console.log(config);
+	const finalConfig: Config = mergeDeep(DEFAULT_CONFIG, config);
+	console.log(finalConfig);
 	const root = document.querySelector(`${finalConfig.root}`) as HTMLElement;
 	if (!root) {
 		return;
@@ -35,11 +37,12 @@ function bootstrap(config: Partial<Config> = {}) {
 	style.textContent = `@import url(${finalConfig.host}/styles.css)`;
 	shadowRoot.appendChild(style);
 	const widget = new Widget(shadowRoot, finalConfig.palette);
-	widget.init();
+	// You should have questions :) I'm lazy AF
+	style.addEventListener('load', () => widget.init());
 }
 
 function getConfigFromWindow(): Partial<Config> {
 	return window.$$avWidgetConfig || {} as Partial<Config>;
 }
 
-bootstrap(getConfigFromWindow());
+index(getConfigFromWindow());

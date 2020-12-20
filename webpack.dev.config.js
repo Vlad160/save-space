@@ -5,7 +5,7 @@ const common = require('./webpack.common.config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
-    entry: path.resolve(__dirname, 'src', 'bootstrap.ts'),
+    entry: path.resolve(__dirname, 'src', 'index.ts'),
     output: {
         filename: 'widget.js',
         path: path.resolve(__dirname, 'dist'),
