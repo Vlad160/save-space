@@ -8,12 +8,12 @@
 * `npm start`
 * Navigate to `http://localhost:3000` to observe an integrated widget.
 
-Widget configurations is provided using window property `$$avWidgetConfig`. Check `src/index.ts` `Config` interface for
+Widget configurations are done using window property `$$avWidgetConfig`. Check `Config` [interface](src/index.ts) for
 possible configurations.
 
 To change widget configuration (colors) you have 2 options:
 
-* Changes in file `demo/index.html` (in script tag) and use `npm build`
+* Changes file `demo/index.html` (in script tag) and use `npm build`.
 
 * Change `dist/index.html` (in script tag) and reload the page.
 
