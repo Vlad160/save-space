@@ -24,20 +24,21 @@ export const DEFAULT_CONFIG = {
 }
 
 function index(config: Partial<Config> = {}) {
-	console.log(config);
 	const finalConfig: Config = mergeDeep(DEFAULT_CONFIG, config);
-	console.log(finalConfig);
+	// Yes, it expects bootstrap root. Easy to change.
 	const root = document.querySelector(`${finalConfig.root}`) as HTMLElement;
 	if (!root) {
 		return;
 	}
 	root.style.display = 'inline';
+	// For styles encapsulation
 	const shadowRoot = root.attachShadow({ mode: 'open' });
 	const style = document.createElement('style');
+	// Load styles
 	style.textContent = `@import url(${finalConfig.host}/styles.css)`;
 	shadowRoot.appendChild(style);
 	const widget = new Widget(shadowRoot, finalConfig.palette);
-	// You should have questions :) I'm lazy AF
+	// You should have questions :) I'm lazy AF. Of course I have plenty of options but....
 	style.addEventListener('load', () => widget.init());
 }
 

@@ -1,11 +1,11 @@
 {
   "name": "aviasales-widget",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aviasales Travelpayouts widget task",
   "keywords": [],
-  "license": "ISC",
-  "author": "",
-  "main": "index.js",
+  "license": "UNLICNESED",
+  "author": "Jmishenko Valrty",
+  "main": "dist/widget.js",
   "scripts": {
     "build": "webpack --config webpack.prod.config.js",
     "serve": "webpack serve --config webpack.dev.config.js",
